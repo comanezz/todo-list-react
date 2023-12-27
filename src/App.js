@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import { useState } from "react";
 import './styles/module/Style.css';
 import Title from './components/Title.js'
@@ -13,11 +12,16 @@ function App() {
     e.preventDefault();
     setTodos([...todos, listValue]);
     setListValue('');
-    alert('you entered ' + listValue);
   }
 
   function handleChange(e) {
     setListValue(e.target.value)
+  }
+
+  function handleDelete(index) {
+    const newTodos = [...todos];
+    newTodos.splice(index, 1);
+    setTodos(newTodos);
   }
 
   return (
@@ -27,7 +31,7 @@ function App() {
         value={listValue}
         handleSubmit={handleSubmit}
         onChange={handleChange} />
-      <ListContent todos={todos} />
+      <ListContent todos={todos} handleDelete={handleDelete} />
     </div>
   );
 }

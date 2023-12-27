@@ -1,11 +1,13 @@
-function ListValueContent({ todos }) {
+function ListValueContent({ todos, handleDelete }) {
+  
   return (
     <div>
       <ul>
-        {todos.map((todo) =>
+        {todos.map((todo, index) =>
           (
-            <li key={todo}>
+            <li key={index}>
               {todo}
+              <button onClick={() => handleDelete(index)}>Delete</button>
             </li>
           )
         )}
@@ -14,10 +16,10 @@ function ListValueContent({ todos }) {
   )
 }
 
-export default function ListContent({ todos }) {
+export default function ListContent({ todos, handleDelete }) {
   return (
     <div>
-      <ListValueContent todos={todos} />
+      <ListValueContent todos={todos} handleDelete={handleDelete} />
     </div>
   )
 }
