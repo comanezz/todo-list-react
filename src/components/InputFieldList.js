@@ -1,14 +1,4 @@
-import { useState } from "react";
-
-export default function InputFieldList() {
-  const [listValue, setListValue] = useState('');
-
-  function handleSubmit(e) {
-    e.preventDefault();
-
-    alert('you entered ' + listValue);
-  }
-
+export default function InputFieldList({ value, handleSubmit,onChange }) {
   return (
     <div id="form-container">
       <form onSubmit={handleSubmit}>
@@ -16,8 +6,8 @@ export default function InputFieldList() {
           name='listValue'
           className="width-100"
           placeholder="Add new"
-          
-          onChange={(e) => setListValue(e.target.value)}
+          value={value}
+          onChange={onChange}
         />
         <input type='submit' />
       </form>
